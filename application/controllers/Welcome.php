@@ -26,7 +26,11 @@ class Welcome extends CI_Controller {
 		}
 		else
 		{
-		$this->load->view('welcome_message');
+          $data['title'] = 'Welcome';
+        $this->load->view('templates/header', $data);
+        $this->load->view('welcome_message');    
+        $this->load->view('templates/footer', $data);
+            
 		}
 	}
 }
