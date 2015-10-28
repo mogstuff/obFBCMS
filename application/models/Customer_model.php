@@ -10,13 +10,16 @@ class Customer_model extends CI_Model {
         {
                 // Call the CI_Model constructor
                 parent::__construct();
+                $this->load->database();
         }
 
-        public function get_last_ten_entries()
-        {
-                $query = $this->db->get('entries', 10);
-                return $query->result();
-        }
+       
+       public function getCustomers()
+       {
+                $query = $this->db->get('tbl_customer');
+        return $query->result_array();
+               
+       }
 
     
     

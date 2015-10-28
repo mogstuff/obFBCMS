@@ -3,21 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Customer extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+	
+	 function __construct() {
+        parent::__construct();
+
+        $this->load->model('customer_model');
+    }
+	 
+	 
 	public function index()
 	{
 		if(!$this->ion_auth->logged_in())
@@ -26,18 +19,26 @@ class Customer extends CI_Controller {
 		}
 		else
 		{
-          $data['title'] = 'Clients List';
+        //  $data['title'] = 'Clients List';
             
         //    $this->load->model('customer');
 
             //    $data['query'] = $this->customer->get_last_ten_entries();
 
               //  $this->load->view('blog', $data);
+            $customers = $this->customer_model->getCustomers();
             
+            print_r($customers);
+            
+            $data = array(
+    'title' => 'My Title',
+    'heading' => 'My Heading',
+    'message' => 'My Message'
+);
             
         $this->load->view('templates/header', $data);
-        $this->load->view('clients_list', $data);    
-        $this->load->view('templates/footer', $data);
+        $this->load->view('clients_list',$data);    
+        $this->load->view('templates/footer');
             
 		}
 	}
