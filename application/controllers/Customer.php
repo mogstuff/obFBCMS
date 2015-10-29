@@ -28,12 +28,13 @@ class Customer extends CI_Controller {
               //  $this->load->view('blog', $data);
             $customers = $this->customer_model->getCustomers();
             
-            print_r($customers);
+           // print_r($customers);
             
             $data = array(
     'title' => 'My Title',
     'heading' => 'My Heading',
-    'message' => 'My Message'
+    'message' => 'My Message',
+    'customers' => $customers
 );
             
         $this->load->view('templates/header', $data);
