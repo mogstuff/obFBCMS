@@ -11,7 +11,11 @@
  <body>
 <div class="container">
     
-    <div><a href="http://localhost:8080/obFBCMS/index.php/customer/">Clients</a></div>
+    <div>
+        <a href="http://localhost:8080/obFBCMS/index.php/customer/">Clients</a>
+        <a href=" https://obfbcms-mogstuff.c9.io/index.php/auth/logout">Log Out</a>
+        
+    </div>
 
         <h2>Olive Branch Client Management System</h2>
 
