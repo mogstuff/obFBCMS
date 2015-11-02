@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost:8080/obFBCMS/';
+$config['base_url'] = 'http://the-olivebranch.org.uk/crm/';
 
 /*
 |--------------------------------------------------------------------------

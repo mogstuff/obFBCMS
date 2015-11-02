@@ -30,7 +30,7 @@ class Main extends CI_Controller {
         }
         else
         {
-        $this->grocery_crud->set_table('tbl_customer');
+        $this->grocery_crud->set_table('guests');
         $output = $this->grocery_crud->render();
  
         $this->_example_output($output);        

@@ -481,7 +481,7 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
 	protected function set_default_Model()
 	{
 		$ci = &get_instance();
-		$ci->load->model('grocery_CRUD_Model');
+		$ci->load->model('Grocery_CRUD_Model');
 
 		$this->basic_model = new grocery_CRUD_Model();
 	}
