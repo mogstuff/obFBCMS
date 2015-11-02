@@ -29,7 +29,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
       
-          <li>    <a href="<?php echo base_url('/index.php/customer');?>"><span class="glyphicon glyphicon-user"></span> Guests</a>
+          <li>    <a href="<?php echo base_url('/index.php/main/guests/');?>"><span class="glyphicon glyphicon-user"></span> Guests</a>
         </li>
         <li>   <a href="<?php echo base_url('/index.php/auth/logout');?>"><span class="glyphicon glyphicon-log-out"></span> Log Out</a>
      </li>
