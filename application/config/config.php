@@ -17,7 +17,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
+<<<<<<< HEAD
 $config['base_url'] = 'https://obfbcms-mogstuff.c9.io/';
+=======
+$config['base_url'] = 'http://the-olivebranch.org.uk/crm/';
+>>>>>>> 69e3847ed316f6b09cd276a80b5f9ec8f1ba5aaf
 
 /*
 |--------------------------------------------------------------------------

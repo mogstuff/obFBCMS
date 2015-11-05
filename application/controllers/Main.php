@@ -30,8 +30,12 @@ class Main extends CI_Controller {
         }
         else
         {
+<<<<<<< HEAD
        
       $this->grocery_crud->set_table('tbl_customer');
+=======
+        $this->grocery_crud->set_table('guests');
+>>>>>>> 69e3847ed316f6b09cd276a80b5f9ec8f1ba5aaf
         $output = $this->grocery_crud->render();
      
             $data['title'] = 'Guests';
