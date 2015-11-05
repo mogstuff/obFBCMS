@@ -23,27 +23,37 @@ class Main extends CI_Controller {
  
     public function guests()
     {
-      
       if(!$this->ion_auth->logged_in())
         {
         redirect('auth/login');
         }
         else
         {
-<<<<<<< HEAD
-       
-      $this->grocery_crud->set_table('tbl_customer');
-=======
-        $this->grocery_crud->set_table('guests');
->>>>>>> 69e3847ed316f6b09cd276a80b5f9ec8f1ba5aaf
+        
+        
+         $crud = new grocery_CRUD();
+ 
+        $crud->set_theme('datatables');
+        
+            $this->grocery_crud->set_table('guests')
+            ->columns('TOB_No','FirstName','LastName','TelNo', 'Gender')
+        ->display_as('FirstName','First Name')
+        ->display_as('LastName','Last Name');
+            
+         $crud->display_as('customerID','Guest ID');
+         $crud->set_subject('Guest Visits');    
+         
+            //$crud->set_relation_n_n('groups', 'users_groups', 'groups','user_id','group_id','description');
+          $crud->set_relation('CustomerID','tbl_customer','ID');
+        
         $output = $this->grocery_crud->render();
-     
+        
             $data['title'] = 'Guests';
         $this->load->view('templates/header', $data);
-          $this->_example_output($output);           
+         $this->_example_output($output);      
         $this->load->view('templates/footer', $data);
-        
-     echo "test guest list";   
+ 
+       
             
         }
         
@@ -64,7 +74,7 @@ class Main extends CI_Controller {
          $crud = new grocery_CRUD();
  
         $crud->set_theme('datatables');
-        $this->grocery_crud->set_table('tbl_visit');
+        $this->grocery_crud->set_table('guest_visits');
          $crud->display_as('customerID','Guest ID');
          $crud->set_subject('Guest Visits');
          
@@ -77,18 +87,15 @@ class Main extends CI_Controller {
          $this->_example_output($output);      
         $this->load->view('templates/footer', $data);
  
-          
-     
-     echo "test visits list";   
+       
             
         }
         
     }
     
     
- 
- 
- 
+
+    
     function _example_output($output = null)
  
     {

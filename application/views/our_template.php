@@ -12,7 +12,7 @@ foreach($css_files as $file): ?>
  
     <script src="<?php echo $file; ?>"></script>
 <?php endforeach; ?>
- 
+ <!--
 <style type='text/css'>
 body
 {
@@ -29,19 +29,9 @@ a:hover
     text-decoration: underline;
 }
 </style>
+-->
 </head>
 <body>
-<!-- Beginning header -->
-    <div>
-
-        <a href="<?php echo base_url('/index.php/');?>"><span class="glyphicon glyphicon-home"></span> Home</a> |
-
-        <a href='<?php echo site_url('examples/customers_management')?>'>Guests</a> 
-        
-    </div>
-<!-- End of header-->
-    <div style='height:20px;'></div>  
-    <div>
         <?php echo $output; ?>
  
     </div>

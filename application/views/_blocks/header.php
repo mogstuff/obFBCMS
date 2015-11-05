@@ -14,25 +14,6 @@
            
            <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-1.11.3.min.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
-     
-           
-       
-<style type='text/css'>
-body
-{
-    font-family: Arial;
-    font-size: 14px;
-}
-a {
-    color: blue;
-    text-decoration: none;
-    font-size: 14px;
-}
-a:hover
-{
-    text-decoration: underline;
-}
-</style>    
            
 </head>
 
@@ -46,17 +27,15 @@ a:hover
     </div>
     <div>
       <ul class="nav navbar-nav">
-   
-          <?php
+     <?php
 if($this->ion_auth->logged_in()) {
 ?>
-          <li><a href="<?php echo base_url('/index.php/');?>"><span class="glyphicon glyphicon-home "></span> Home</a></li>
-         
+          <li ><a href="<?php echo base_url('/index.php/');?>"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      
           <li>    <a href="<?php echo base_url('/index.php/main/guests/');?>"><span class="glyphicon glyphicon-user"></span> Guests</a>
                <li>    <a href="<?php echo base_url('/index.php/main/visits/');?>"><span class="glyphicon glyphicon-user"></span> Visits</a>
         </li>
-    
-                     <?php
+             <?php
     if($this->ion_auth->is_admin())
     {
     ?>
@@ -66,14 +45,12 @@ if($this->ion_auth->logged_in()) {
     }
     ?>
           
-          
           <li>   <a href="<?php echo base_url('/index.php/auth/logout');?>"><span class="glyphicon glyphicon-log-out"></span> Log Out</a>
      </li>
           
-  
-          
+   
+
   <?php } ?>        
-          
       </ul>
     </div>
   </div>
@@ -81,7 +58,9 @@ if($this->ion_auth->logged_in()) {
 
      
      
-    <div class="page-header">
+     <div class="container">
+         
+           <div class="page-header">
 
             <div cl class="row">
                <div class="col-sm-8">
@@ -93,6 +72,9 @@ if($this->ion_auth->logged_in()) {
   
          
          </div>
+
+         
+   
 
                 
                 

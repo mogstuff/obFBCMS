@@ -90,6 +90,7 @@ class Auth extends CI_Controller {
 				'type' => 'password',
 			);
 
+            
 			$this->_render_page('auth/login', $this->data);
 		}
 	}
@@ -814,9 +815,9 @@ class Auth extends CI_Controller {
 	{
 
 		$this->viewdata = (empty($data)) ? $this->data: $data;
-        $this->load->view('templates/header', $data);       
+      //  $this->load->view('templates/header', $data);       
 		$view_html = $this->load->view($view, $this->viewdata, $returnhtml);
-         $this->load->view('templates/footer', $data);
+    //     $this->load->view('templates/footer', $data);
                
         
 		if ($returnhtml) return $view_html;//This will return html on 3rd argument being true
