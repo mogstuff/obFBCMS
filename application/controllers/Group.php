@@ -28,7 +28,14 @@ class Group extends CI_Controller {
 		{
           $data['title'] = 'Groups';
     //    $this->load->view('_blocks/header', $data);
-        $this->load->view('welcome_message', $data);    
+  //  $this->data['current_user'] = $this->ion_auth->user()->row();
+    
+     $this->data['page_title'] = 'Groups';
+  $this->data['groups'] = $this->ion_auth->groups()->result();
+  
+    
+    print_r( $this->data);
+        $this->load->view('list_groups', $data);    
     //    $this->load->view('_blocks/footer', $data);
             
 		}
