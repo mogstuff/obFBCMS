@@ -26,9 +26,10 @@ class Group extends CI_Controller {
 		}
 		else
 		{
-          $data['title'] = 'Groups';
-            this->data['groups'] = $this->ion_auth->groups()->result();
-        $this->load->view('welcome_message', $data);    
+
+     $this->data['page_title'] = 'Groups';
+        $this->data['groups'] = $this->ion_auth->groups()->result();
+        $this->load->view('list_groups', $data);    
             
 		}
 	}
