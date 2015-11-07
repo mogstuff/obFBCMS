@@ -1,3 +1,6 @@
+<?php $this->load->view('_blocks/header'); ?>
+  <div class="row">
+
 <h1><?php echo lang('create_group_heading');?></h1>
 <p><?php echo lang('create_group_subheading');?></p>
 
@@ -18,3 +21,7 @@
       <p><?php echo form_submit('submit', lang('create_group_submit_btn'));?></p>
 
 <?php echo form_close();?>
+      
+</div>
+<?php $this->load->view('_blocks/header'); ?>
+  <div class="row">

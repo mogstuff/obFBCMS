@@ -44,6 +44,12 @@ if($this->ion_auth->logged_in()) {
     <?php
     }
     ?>
+     
+               <li>   <a href="<?php echo base_url('/index.php/user/profile');?>"><span class="glyphicon glyphicon-user"></span> My Account</a>
+     </li>
+     
+          
+          
           
           <li>   <a href="<?php echo base_url('/index.php/auth/logout');?>"><span class="glyphicon glyphicon-log-out"></span> Log Out</a>
      </li>
