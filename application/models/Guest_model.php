@@ -1,6 +1,6 @@
 <?php
 
-class Customer_model extends CI_Model {
+class Guest_model extends CI_Model {
 
         public $firstname;
         public $lastname;
@@ -14,12 +14,7 @@ class Customer_model extends CI_Model {
         }
 
        
-       public function getCustomers()
-       {
-                $query = $this->db->get('tbl_customer');
-        return $query->result_array();
-               
-       }
+       
 
    public function getGuests()
        {

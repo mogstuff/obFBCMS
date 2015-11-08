@@ -72,29 +72,40 @@ class Main extends CI_Controller {
         
         
          $crud = new grocery_CRUD();
- 
         $crud->set_theme('datatables');
-        $this->grocery_crud->set_table('guest_visits');
-         $crud->display_as('customerID','Guest ID');
-         $crud->set_subject('Guest Visits');
-         
-          $crud->set_relation('customerID','tbl_customer','ID');
-        
-        $output = $this->grocery_crud->render();
-        
-            $data['title'] = 'Visits';
+        $crud->set_table('guest_visits');
+     //   $crud->callback_edit_field('guest_id',array($this,'_call_back_guests'));
+    //    $crud->callback_add_field('guest_id',array($this,'_call_back_guests'));
+        $crud->display_as('guest_id','Guest');
+        $crud->set_subject('Visits');
+        $crud->set_relation('guest_id','guests','{FirstName} {LastName}');
+            $crud->set_relation('user_id','users','{username} - {last_name} {first_name}');
+        $output = $crud->render();
+      //  $this->_example_output($output);
+        $data['title'] = 'Visits';
         $this->load->view('templates/header', $data);
          $this->_example_output($output);      
-        $this->load->view('templates/footer', $data);
- 
+        $this->load->view('templates/footer', $data); 
        
             
         }
         
     }
     
+    function _call_back_guests()
+    {
+  $this->load->model('Guest_model'); // your model
+$data = $this->Guest_model->getGuests(); //$this->user_model->getYou('offices','officeCode, city', "state = '".$this->session->userdata('state')."'"); // iam using session here
+$hasil ='<select name="guest_id">';
+foreach($data as $x)
+{
+$hasil .='<option value="'.$x->id.'">'.$x->FirstName.'</option>';
+}
+return $hasil.'</select>';
+        
+    }
     
-
+  
     
     function _example_output($output = null)
  
