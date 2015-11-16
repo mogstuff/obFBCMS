@@ -87,7 +87,7 @@ if($this->ion_auth->logged_in()) {
                <div class="col-sm-8">
                    <h1><?php echo $title; ?></h1>      </div>
                
-               <div class="col-sm-4">  <img src="http://olivebranch.adamzahler.com/wp-content/uploads/2015/05/the-olive-branch-logo-header-2.png" /></div>
+               <div class="col-sm-4">  <img src="http://www.the-olivebranch.org.uk/wp-content/uploads/2015/05/the-olive-branch-logo-header-2.png" /></div>
       
                </div>
   
