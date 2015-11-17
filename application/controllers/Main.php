@@ -9,16 +9,15 @@ class Main extends CI_Controller {
         /* Standard Libraries of codeigniter are required */
         $this->load->database();
         $this->load->helper('url');
-        /* ------------------ */ 
- 
-        $this->load->library('grocery_CRUD');
- 
+        /* ------------------ */  
+        $this->load->library('grocery_CRUD'); 
     }
  
+    
     public function index()
     {
         echo "<h1>Welcome to the world of Codeigniter</h1>";//Just an example to ensure that we get into the function
-                die();
+        die();
     }
  
     public function guests()
@@ -29,10 +28,12 @@ class Main extends CI_Controller {
         }
         else
         {
-        
+       
+             $data = array( 'title' => 'My Title' );
+            
          $crud = new grocery_CRUD();
-        $crud->set_theme('datatables');
-            $this->grocery_crud->set_table('guests')
+       $this->grocery_crud->set_theme('flexigrid');
+    $this->grocery_crud->set_table('guests')
             ->columns('TOB_No','FirstName','LastName','TelNo', 'Gender')
         ->display_as('FirstName','First Name')
         ->display_as('LastName','Last Name')
@@ -44,38 +45,33 @@ class Main extends CI_Controller {
           ->display_as('PlaceOfBirth','Place of Birth')
          ->display_as('NoOfChildren','No of Children')
          ->display_as('NatInsuranceNo','NI No.')
-          ->display_as('ExOffender','Ex Offender');
+                ->display_as('HelpFromOthers', 'Help From Others')
+                ->display_as('WhereHeardOfTOB', 'Where Heard Of TOB')
+          ->display_as('ExOffender','Ex Offender')
+            ->display_as('Interviewe', 'Interviewee');
          $crud->display_as('customerID','Guest ID');
          $crud->display_as('DoctorName', 'Doctor Name and Address');
          
            $this->grocery_crud->field_type('gender','dropdown',array('Male'=>'Male', 'Female'=>'Female' , 'Other'=>'Other' ), $default_value = 'Male');
-          $this->grocery_crud->field_type('RegDisabled','dropdown',array('No'=>'No', 'Yes'=>'Yes'  ), $default_value = 'No');
-          /*
-          Ethnicity - drop down - White, African, Carribean, Asian, Arabic, Chinese, Other - default White.
-          */
-           $this->grocery_crud->field_type('Ethnicity','dropdown',array('White'=>'White', 'African'=>'African' , 'Carribean'=>'Carribean',
-                                                'Asian' => 'Asian', 'Arabic' => 'Arabic', 'Chinese' => 'Chinese', 'Other' => 'Other'), $default_value = 'White');
-          
-           $crud->display_as('RegDisabled','Reg Disabled');
-           $this->grocery_crud->field_type('ExOffender','dropdown',array('No'=>'No', 'Yes'=>'Yes'  ), $default_value = 'No');
-           $this->grocery_crud->field_type('CanReadAndWrite','dropdown',array('Yes'=>'Yes', 'No'=>'No'  ), $default_value = 'Yes');
-         
-         $crud->set_subject('Guests');    
-         
-         $crud->set_relation('CustomerID','tbl_customer','ID');
-        
-        $output = $this->grocery_crud->render();
-        
-            $data['title'] = 'Guests';
-        $this->load->view('templates/header', $data);
-         $this->_example_output($output);      
-        $this->load->view('templates/footer', $data);
- 
-       
+            $this>set_select('gender', 'Male');
             
-        }
+$this->grocery_crud->field_type('RegDisabled','dropdown',array('No'=>'No', 'Yes'=>'Yes'  ), $default_value = 'No');
+ $this->grocery_crud->field_type('Ethnicity','dropdown',array('White'=>'White', 'African'=>'African' , 'Carribean'=>'Carribean',
+                                        'Asian' => 'Asian', 'Arabic' => 'Arabic', 'Chinese' => 'Chinese', 'Other' => 'Other'), $default_value = 'White');
+          
+  $crud->display_as('RegDisabled','Reg Disabled');
+   $this->grocery_crud->field_type('ExOffender','dropdown',array('No'=>'No', 'Yes'=>'Yes'  ), $default_value = 'No');
+   $this->grocery_crud->field_type('CanReadAndWrite','dropdown',array('Yes'=>'Yes', 'No'=>'No'  ), $default_value = 'Yes');
+            
+    $crud->set_subject('Guests');    
+    $crud->set_relation('CustomerID','tbl_customer','ID');
+    $output = $this->grocery_crud->render();
+    $data['title'] = 'Guests';
+    $this->load->view('_blocks/header', $data);        
+    $this->_example_output($output);      
+}
         
-    }
+}
     
     
      public function visits()
@@ -93,8 +89,8 @@ class Main extends CI_Controller {
 
 $currentUserId = $this->ion_auth->user()->row()->id;
 
-
-        $crud->set_theme('datatables');
+  $this->grocery_crud->set_theme('flexigrid');
+     
         $crud->set_table('guest_visits');
         $crud->display_as('guest_id','Guest');
         $crud->set_subject('Visits');
@@ -113,10 +109,8 @@ $currentUserId = $this->ion_auth->user()->row()->id;
      
         $output = $crud->render();
         $data['title'] = 'Visits';
-        $this->load->view('templates/header', $data);
-         $this->_example_output($output);      
-        $this->load->view('templates/footer', $data); 
-       
+    $this->load->view('_blocks/header', $data);            
+            $this->_example_output($output);      
             
         }
         
@@ -124,8 +118,10 @@ $currentUserId = $this->ion_auth->user()->row()->id;
     
     function _call_back_guests()
     {
-  $this->load->model('Guest_model'); // your model
-$data = $this->Guest_model->getGuests(); //$this->user_model->getYou('offices','officeCode, city', "state = '".$this->session->userdata('state')."'"); // iam using session here
+$this->load->model('Guest_model'); // your model
+$data = $this->Guest_model->getGuests(); 
+        //$this->user_model->getYou('offices','officeCode, city', "state = '".$this->session->userdata('state')."'");
+        // iam using session here
 $hasil ='<select name="guest_id">';
 foreach($data as $x)
 {
