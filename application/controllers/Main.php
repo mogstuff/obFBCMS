@@ -43,14 +43,14 @@ class Main extends CI_Controller {
           ->display_as('CanReadAndWrite', 'Can Read And Write')
            ->display_as('CurrentAddressOrNoFixedAbode', 'Address')
           ->display_as('PlaceOfBirth','Place of Birth')
-         ->display_as('NoOfChildren','No of Children')
+         ->display_as('NoOfChildren','No of Dependant Children')
          ->display_as('NatInsuranceNo','NI No.')
                 ->display_as('HelpFromOthers', 'Help From Others')
                 ->display_as('WhereHeardOfTOB', 'Where Heard Of TOB')
           ->display_as('ExOffender','Ex Offender')
             ->display_as('Interviewe', 'Interviewee');
          $crud->display_as('customerID','Guest ID');
-         $crud->display_as('DoctorName', 'Doctor Name and Address');
+         $this->grocery_crud->display_as('DoctorName', 'Doctor Name and Address');
          
            $this->grocery_crud->field_type('gender','dropdown',array('Male'=>'Male', 'Female'=>'Female' , 'Other'=>'Other' ), $default_value = 'Male');
             $this>set_select('gender', 'Male');
