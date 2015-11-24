@@ -63,6 +63,8 @@ $this->grocery_crud->field_type('RegDisabled','dropdown',array('No'=>'No', 'Yes'
    $this->grocery_crud->field_type('ExOffender','dropdown',array('No'=>'No', 'Yes'=>'Yes'  ), $default_value = 'No');
    $this->grocery_crud->field_type('CanReadAndWrite','dropdown',array('Yes'=>'Yes', 'No'=>'No'  ), $default_value = 'Yes');
             
+ $this->grocery_crud->field_type('WhereHeardOfTOB','dropdown',array('CAB'=>'CAB', 'CAP'=>'CAP' , 'CAUNSS'=>'CAUNSS', 'DWP' => 'DWP', 'LCC' => 'LCC', 'LDHAS' => 'LDHAS',  'DWP' => 'DWP', 'Social Services' => 'Social Services', 'Other' => 'Other'  ) );
+            
     $crud->set_subject('Guests');    
     $crud->set_relation('CustomerID','tbl_customer','ID');
     $output = $this->grocery_crud->render();
@@ -95,11 +97,87 @@ $currentUserId = $this->ion_auth->user()->row()->id;
         $crud->display_as('guest_id','Guest');
         $crud->set_subject('Visits');
         $crud->set_relation('guest_id','guests','{FirstName} {LastName}');
-            $crud->set_relation('user_id','users','{username} - {last_name} {first_name}');
+            $crud->set_relation('user_id','users','{last_name} {first_name}');
               $crud->display_as('user_id','Volunteer');
+            
               $crud->display_as('OriginalNeed', 'Original Need');
             $crud->display_as('UnderlyingNeed', 'Underlying Need');  
             $crud->display_as('AdditionalNeed', 'Additional Need');
+            
+             $crud->field_type('OriginalNeed','dropdown',
+                                             array(
+                                                 'Addiction'=>'Addiction', 
+                                                 'Advocacy'=>'Advocacy' ,
+                                                 'Benefit Issues'=>'Benefit Issues', 
+                                                 'Debt / Budgeting' => 'Debt / Budgeting', 
+                                                 'Fellowship' => 'Fellowship', 
+                                                 'Food' => 'Food',  
+                                                 'Health (including Mental Health)' => 'Health (including Mental Health)', 
+                                                 'Housing / Accommodation' => 'Housing / Accommodation', 
+                                                 'NFA' => 'NFA' ,
+                                                 'Other' => 'Other',
+                                                 'Phone / Computer' => 'Phone / Computer',
+                                                 'Sleeping bag' => 'Sleeping bag',
+                                                 'Sleeping bag & Tent' => 'Sleeping bag & Tent',
+                                                 'Tent' => 'Tent'
+                                             ) 
+                                        );
+            
+            
+             $crud->field_type('UnderlyingNeed','dropdown',
+                                             array(
+                                                 'Addiction'=>'Addiction', 
+                                                 'Advocacy'=>'Advocacy' ,
+                                                 'Benefit Issues'=>'Benefit Issues', 
+                                                 'Debt / Budgeting' => 'Debt / Budgeting', 
+                                                 'Fellowship' => 'Fellowship', 
+                                                 'Food' => 'Food',  
+                                                 'Health (including Mental Health)' => 'Health (including Mental Health)', 
+                                                 'Housing / Accommodation' => 'Housing / Accommodation', 
+                                                 'NFA' => 'NFA' ,
+                                                 'Other' => 'Other',
+                                                 'Phone / Computer' => 'Phone / Computer',
+                                                 'Sleeping bag' => 'Sleeping bag',
+                                                 'Sleeping bag & Tent' => 'Sleeping bag & Tent',
+                                                 'Tent' => 'Tent'
+                                             ) 
+                                        );
+            
+            
+            
+             $crud->field_type('AdditionalNeed','dropdown',
+                                             array(
+                                                 'Addiction'=>'Addiction', 
+                                                 'Advocacy'=>'Advocacy' ,
+                                                 'Benefit Issues'=>'Benefit Issues', 
+                                                 'Debt / Budgeting' => 'Debt / Budgeting', 
+                                                 'Fellowship' => 'Fellowship', 
+                                                 'Food' => 'Food',  
+                                                 'Health (including Mental Health)' => 'Health (including Mental Health)', 
+                                                 'Housing / Accommodation' => 'Housing / Accommodation', 
+                                                 'NFA' => 'NFA' ,
+                                                 'Other' => 'Other',
+                                                 'Phone / Computer' => 'Phone / Computer',
+                                                 'Sleeping bag' => 'Sleeping bag',
+                                                 'Sleeping bag & Tent' => 'Sleeping bag & Tent',
+                                                 'Tent' => 'Tent'
+                                             ) 
+                                        );
+        
+            $crud->display_as('RefIn','Ref In');
+            
+                        
+ $crud->field_type('RefIn','dropdown',array('CAB'=>'CAB', 'CAP'=>'CAP' , 'CAUNSS'=>'CAUNSS', 'DWP' => 'DWP', 'LCC' => 'LCC', 'LDHAS' => 'LDHAS',  'DWP' => 'DWP', 'Social Services' => 'Social Services', 'Other' => 'Other'  ) );
+
+            
+        $crud->display_as('RefOut','Ref Out');
+        
+                        
+ $crud->field_type('RefOut','dropdown',array('CAB'=>'CAB', 'CAP'=>'CAP' , 'CAUNSS'=>'CAUNSS', 'DWP' => 'DWP', 'LCC' => 'LCC', 'LDHAS' => 'LDHAS',  'DWP' => 'DWP', 'Social Services' => 'Social Services', 'Other' => 'Other'  ) );
+
+            
+            
+            
             $crud->display_as('NumberAdultProvidedFor' , 'No of Adults Provided For');
              $crud->display_as('NumberChildrenProvidedFor' , 'No of Children Provided For');
                $crud->display_as('CommentsSummary','Comment Summary');

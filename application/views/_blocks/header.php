@@ -8,21 +8,24 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
 <?php 
     
+if($this->ion_auth->user()->row() != null)
+{
 $userId =  $this->ion_auth->user()->row()->id;
-//var_dump($userId);
-    ?>
+
+?>
 
     <script type="text/javascript">
 
   $(document).ready(function(){
    
-     // alert('<?php echo $userId; ?>');
+     
       $("#field-user_id").val("<?php echo $userId; ?>");
       
 });  
     
 </script>
-    
+ 
+    <?php } ?>
 <style>
     
 .form-control{
