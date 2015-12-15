@@ -34,26 +34,36 @@ class Main extends CI_Controller {
          $crud = new grocery_CRUD();
        $this->grocery_crud->set_theme('flexigrid');
     $this->grocery_crud->set_table('guests')
-            ->columns('TOB_No','FirstName','LastName','TelNo', 'Gender')
+            ->columns('id','FirstName','LastName','TelNo', 'Gender')
+        ->display_as('id','TOB No')
+        
         ->display_as('FirstName','First Name')
         ->display_as('LastName','Last Name')
         ->display_as('TelNo','Telephone')
           ->display_as('FirstVisitdate','First Visit')
           ->display_as('RegDisabled','Reg Disabled')
           ->display_as('CanReadAndWrite', 'Can Read And Write')
-           ->display_as('CurrentAddressOrNoFixedAbode', 'Address')
-          ->display_as('PlaceOfBirth','Place of Birth')
+           ->display_as('CurrentAddress', 'Current Address')
+           ->display_as('NFA', 'No Fixed Abode')
+        
+        ->display_as('PlaceOfBirth','Place of Birth')
          ->display_as('NoOfChildren','No of Dependant Children')
          ->display_as('NatInsuranceNo','NI No.')
                 ->display_as('HelpFromOthers', 'Help From Others')
                 ->display_as('WhereHeardOfTOB', 'Where Heard Of TOB')
           ->display_as('ExOffender','Ex Offender')
-            ->display_as('Interviewe', 'Interviewee');
+            ->display_as('Interviewee', 'Interviewee');
          $crud->display_as('customerID','Guest ID');
          $this->grocery_crud->display_as('DoctorName', 'Doctor Name and Address');
          
            $this->grocery_crud->field_type('gender','dropdown',array('Male'=>'Male', 'Female'=>'Female' , 'Other'=>'Other' ), $default_value = 'Male');
             $this>set_select('gender', 'Male');
+        
+            
+               $this->grocery_crud->field_type('NFA','dropdown',array('NO'=>'NO', 'YES'=>'YES' ), $default_value = 'NO');
+            $this>set_select('NFA', 'NO');
+        
+            
             
 $this->grocery_crud->field_type('RegDisabled','dropdown',array('No'=>'No', 'Yes'=>'Yes'  ), $default_value = 'No');
  $this->grocery_crud->field_type('Ethnicity','dropdown',array('White'=>'White', 'African'=>'African' , 'Carribean'=>'Carribean',
@@ -64,6 +74,13 @@ $this->grocery_crud->field_type('RegDisabled','dropdown',array('No'=>'No', 'Yes'
    $this->grocery_crud->field_type('CanReadAndWrite','dropdown',array('Yes'=>'Yes', 'No'=>'No'  ), $default_value = 'Yes');
             
  $this->grocery_crud->field_type('WhereHeardOfTOB','dropdown',array('CAB'=>'CAB', 'CAP'=>'CAP' , 'CAUNSS'=>'CAUNSS', 'DWP' => 'DWP', 'LCC' => 'LCC', 'LDHAS' => 'LDHAS',  'DWP' => 'DWP', 'Social Services' => 'Social Services', 'Other' => 'Other'  ) );
+            
+               // validation rules
+           // $crud->set_rules('CommentsSummary','Comments Summary','max_length[150]');
+            //   $crud->set_rules('NumberAdultProvidedFor','No of Adults Provided For','integer');
+              $this->grocery_crud->set_rules('Age','Age','integer|less_than_equal_to[100]');
+         
+            
             
     $crud->set_subject('Guests');    
     $crud->set_relation('CustomerID','tbl_customer','ID');
@@ -183,7 +200,14 @@ $currentUserId = $this->ion_auth->user()->row()->id;
                $crud->display_as('CommentsSummary','Comment Summary');
                
       $crud->change_field_type('CommentsSummary', 'text');
-      
+      $crud->change_field_type('Outcome', 'text');
+
+            // validation rules
+            $crud->set_rules('CommentsSummary','Comments Summary','max_length[150]');
+               $crud->set_rules('NumberAdultProvidedFor','No of Adults Provided For','integer');
+              $crud->set_rules('NumberChildrenProvidedFor','No of Children Provided For','integer');
+            
+            
      
         $output = $crud->render();
         $data['title'] = 'Visits';
