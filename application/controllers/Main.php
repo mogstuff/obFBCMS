@@ -34,8 +34,12 @@ class Main extends CI_Controller {
          $crud = new grocery_CRUD();
        $this->grocery_crud->set_theme('flexigrid');
     $this->grocery_crud->set_table('guests')
-            ->columns('id','FirstName','LastName','TelNo', 'Gender')
+            ->columns('id','FirstName','LastName','TelNo', 'FirstVisitdate')
         ->display_as('id','TOB No')
+
+                ->display_as('FirstVisitdate','First Visit')
+
+        
         
         ->display_as('FirstName','First Name')
         ->display_as('LastName','Last Name')
@@ -75,12 +79,17 @@ $this->grocery_crud->field_type('RegDisabled','dropdown',array('No'=>'No', 'Yes'
             
  $this->grocery_crud->field_type('WhereHeardOfTOB','dropdown',array('CAB'=>'CAB', 'CAP'=>'CAP' , 'CAUNSS'=>'CAUNSS', 'DWP' => 'DWP', 'LCC' => 'LCC', 'LDHAS' => 'LDHAS',  'DWP' => 'DWP', 'Social Services' => 'Social Services', 'Other' => 'Other'  ) );
             
-               // validation rules
+
+            
+               $this->grocery_crud->field_type('DOB','date');
+
+            
+            // validation rules
            // $crud->set_rules('CommentsSummary','Comments Summary','max_length[150]');
             //   $crud->set_rules('NumberAdultProvidedFor','No of Adults Provided For','integer');
               $this->grocery_crud->set_rules('Age','Age','integer|less_than_equal_to[100]');
          
-            
+            $this->grocery_crud->set_rules('NoOfChildren','No of dependant children', 'integer|less_than_equal_to[100]');
             
     $crud->set_subject('Guests');    
     $crud->set_relation('CustomerID','tbl_customer','ID');
@@ -116,6 +125,8 @@ $currentUserId = $this->ion_auth->user()->row()->id;
         $crud->set_relation('guest_id','guests','{FirstName} {LastName}');
             $crud->set_relation('user_id','users','{last_name} {first_name}');
               $crud->display_as('user_id','Volunteer');
+        
+            
             
               $crud->display_as('OriginalNeed', 'Original Need');
             $crud->display_as('UnderlyingNeed', 'Underlying Need');  
@@ -203,11 +214,14 @@ $currentUserId = $this->ion_auth->user()->row()->id;
       $crud->change_field_type('Outcome', 'text');
 
             // validation rules
-            $crud->set_rules('CommentsSummary','Comments Summary','max_length[150]');
+            $crud->set_rules('CommentsSummary','Comments Summary','max_length[1500]');
                $crud->set_rules('NumberAdultProvidedFor','No of Adults Provided For','integer');
               $crud->set_rules('NumberChildrenProvidedFor','No of Children Provided For','integer');
             
             
+           
+                 $crud->columns('id','guest_id','user_id','date');
+       
      
         $output = $crud->render();
         $data['title'] = 'Visits';
