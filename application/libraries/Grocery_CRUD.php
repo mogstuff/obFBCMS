@@ -553,6 +553,8 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
 
 	protected function set_ajax_list_queries($state_info = null)
 	{
+		
+		
 		if(!empty($state_info->per_page))
 		{
 			if(empty($state_info->page) || !is_numeric($state_info->page) )

@@ -474,6 +474,7 @@ $config['compress_output'] = FALSE;
 */
 $config['time_reference'] = 'local';
 
+
 /*
 |--------------------------------------------------------------------------
 | Rewrite PHP Short Tags

@@ -6,6 +6,14 @@
 <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
 <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-1.11.3.min.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
+
+
+           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+           <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.green-lime.min.css" />
+<script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
+         
+
+
 <?php 
     
 if($this->ion_auth->user()->row() != null)
@@ -56,6 +64,8 @@ if($this->ion_auth->is_admin())
 ?>
 <li><a href="<?php echo site_url('group'); ?>"><span class="glyphicon glyphicon-user"></span> Groups</a></li>
 <li><a href="<?php echo site_url('user'); ?>"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+<li><a href="<?php echo base_url('/index.php/main/staff/'); ?>"><span class="glyphicon glyphicon-user"></span> Staff</a></li>
+
 <?php
 }
 ?>
