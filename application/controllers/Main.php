@@ -260,6 +260,86 @@ $this->load->view('_blocks/header', $data);
 	}
     
     
+    
+     
+public function contacts()
+{
+		if(!$this->ion_auth->logged_in())
+	{
+	redirect('auth/login');
+	}
+	else
+	{
+
+	$crud = new grocery_CRUD();
+	$currentUserId = $this->ion_auth->user()->row()->id;
+
+	$crud->set_theme('flexigrid');
+
+	$crud->set_table('contacts');
+	//$crud->display_as('guest_id','Guest');
+	$this->grocery_crud->set_subject('Contacts - OLD SYSTEM');
+	
+	//$this->grocery_crud->display_as('SeenBy', 'Seen By');
+
+	//$crud->columns('id','guest_id','user_id','SeenBy','date');
+	//$crud->columns('id','FirstName','LastName');
+	$crud->unset_delete();
+	
+	$output = $crud->render();
+	$data['title'] = 'Contacts (Guests?) - OLD System';
+	$this->load->view('_blocks/header', $data);            
+	$this->_example_output($output);      
+
+	}
+
+   
+}
+    
+    
+public function contact_details()
+{
+	if(!$this->ion_auth->logged_in())
+	{
+	redirect('auth/login');
+	}
+	else
+	{
+
+	$crud = new grocery_CRUD();
+	$currentUserId = $this->ion_auth->user()->row()->id;
+
+	$crud->set_theme('flexigrid');
+
+	$crud->set_table('contact_details');
+	//$crud->display_as('guest_id','Guest');
+	$this->grocery_crud->set_subject('Contact Details - OLD SYSTEM');
+	
+	$crud->display_as('SeenBy', 'Seen By');
+	$crud->display_as('guest_id', 'Guest');
+	$crud->display_as('DateOfVisit', 'Date Of Visit');
+	//$crud->columns('id','guest_id','user_id','SeenBy','date');
+	
+	$crud->set_relation('guest_id','contacts','{FirstName} {LastName}');	
+	
+	$crud->columns('id','guest_id', 'DateOfVisit','SeenBy');
+	
+	$crud->unset_delete();
+	$crud->unset_edit();
+	
+	
+	$output = $crud->render();
+	$data['title'] = 'Contact/Guest Details - OLD SYSTEM';
+	$this->load->view('_blocks/header', $data);            
+	$this->_example_output($output);      
+
+	}
+
+   
+}
+
+    
+    
     function _example_output($output = null)
  
     {

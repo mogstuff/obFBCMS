@@ -6,13 +6,20 @@
 <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
 <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-1.11.3.min.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
-
-
-           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-           <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.green-lime.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.green-lime.min.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" el="stylesheet">
 <script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
          
+<style>
+	
+.bigIcon{font-size:45px;margin:1em;}
+	
+.row{margin:1em;}
 
+.fullwidthCol{width:100%;}
+
+</style>
 
 <?php 
     
