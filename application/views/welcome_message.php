@@ -10,7 +10,6 @@
 </div>
 <div class="mdl-card__actions">
 <a href="<?php echo base_url('/index.php/main/guests/');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">View</a>
-<a href="<?php echo base_url('/index.php/main/contacts/');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">View - OLD SYSTEM DATA</a>
 
 </div>
 </div>  
@@ -24,7 +23,6 @@
 </div>
 <div class="mdl-card__actions">
 <a href="<?php echo base_url('/index.php/main/visits/');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">View</a>
-<a href="<?php echo base_url('/index.php/main/contact_details/');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">View - OLD SYSTEM DATA</a>
 </div>
 </div>  
 </div>
